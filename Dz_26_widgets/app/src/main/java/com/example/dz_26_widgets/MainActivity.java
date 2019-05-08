@@ -12,10 +12,15 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String KEY_COUNT = "COUNT";
+    private static final String KEY_FIRST_NAME = "FIRST";
+    private static final String KEY_LAST_NAME = "LAST";
+
     private Toolbar toolbar;
     private EditText editFirstName;
     private EditText editLastName;
     private EditText editAge;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,20 @@ public class MainActivity extends AppCompatActivity {
         setEditAge();
 
         setToolbar();
+
+        if (savedInstanceState != null) {
+            editAge.setText(savedInstanceState.getString(KEY_COUNT));
+            editFirstName.setText(savedInstanceState.getString(KEY_FIRST_NAME));
+            editLastName.setText(savedInstanceState.getString(KEY_LAST_NAME));
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_COUNT, editAge.getText().toString());
+        outState.putString(KEY_FIRST_NAME, editFirstName.getText().toString());
+        outState.putString(KEY_LAST_NAME, editLastName.getText().toString());
     }
 
     private void control() {
