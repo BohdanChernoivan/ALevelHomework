@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/chooseTown"
+        android:gravity="center"
+        android:textColor="@color/colorDark"
+        android:layout_marginTop="15dp"
+        android:textSize="30sp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_gravity="center"
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="35dp"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/button_states"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/low_toolbar"
+        android:background="@color/colorGray"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.Toolbar>
+
+</FrameLayout>
