@@ -21,7 +21,7 @@
         android:layout_gravity="center"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="180dp">
     </android.support.v7.widget.RecyclerView>
 
     <android.support.v7.widget.AppCompatButton
