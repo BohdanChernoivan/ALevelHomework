@@ -5,15 +5,22 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
-import com.dan.weatherforecast.data.CityKharkiv;
-import com.dan.weatherforecast.data.CityKyiv;
+import com.dan.weatherforecast.data.cities.CityDnipro;
+import com.dan.weatherforecast.data.cities.CityDonetsk;
+import com.dan.weatherforecast.data.cities.CityKharkiv;
+import com.dan.weatherforecast.data.cities.CityKyiv;
 import com.dan.weatherforecast.data.base.CityDescription;
+import com.dan.weatherforecast.data.cities.CityLviv;
+import com.dan.weatherforecast.data.cities.CityOdessa;
+import com.dan.weatherforecast.data.cities.CitySumy;
+import com.dan.weatherforecast.data.cities.CityZaporizhia;
 import com.dan.weatherforecast.data.url.CityURL;
 import com.dan.weatherforecast.logic.AdapterURL;
+import com.dan.weatherforecast.presenters.MainPresenter;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainPresenter.MainView {
 
     private StaggeredGridLayoutManager mGridLayout;
     private RecyclerView recyclerView;
@@ -30,21 +37,31 @@ public class MainActivity extends AppCompatActivity {
         settingView();
     }
 
-    private void control() {
+    @Override
+    public void control() {
         cityDescriptionArrayList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
         adapterURL = new AdapterURL();
-        mGridLayout = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        mGridLayout = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
     }
 
-    private void addCity() {
-        for (int i = 0; i < 2; i++) {
-            cityDescriptionArrayList.add(new CityKyiv(CityURL.getGetKyiv()));
-            cityDescriptionArrayList.add(new CityKharkiv(CityURL.getGetKharkiv()));
-        }
+
+    @Override
+    public void addCity() {
+
+        cityDescriptionArrayList.add(new CityKyiv(CityURL.getUrlKyiv()));
+        cityDescriptionArrayList.add(new CityKharkiv(CityURL.getUrlKharkiv()));
+        cityDescriptionArrayList.add(new CityOdessa(CityURL.getUrlOdessa()));
+        cityDescriptionArrayList.add(new CityDnipro(CityURL.getUrlDnipro()));
+        cityDescriptionArrayList.add(new CityDonetsk(CityURL.getUrlDonetsk()));
+        cityDescriptionArrayList.add(new CitySumy(CityURL.getUrlSumy()));
+        cityDescriptionArrayList.add(new CityZaporizhia(CityURL.getUrlZaporizhia()));
+        cityDescriptionArrayList.add(new CityLviv(CityURL.getUrlLviv()));
+
     }
 
-    private void settingView() {
+    @Override
+    public void settingView() {
         recyclerView.setAdapter(adapterURL);
         adapterURL.updateList(cityDescriptionArrayList);
         adapterURL.notifyDataSetChanged();

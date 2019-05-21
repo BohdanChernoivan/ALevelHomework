@@ -1,4 +1,4 @@
-package com.dan.weatherforecast.data;
+package com.dan.weatherforecast.data.cities;
 
 import com.dan.weatherforecast.data.base.CityDescription;
 

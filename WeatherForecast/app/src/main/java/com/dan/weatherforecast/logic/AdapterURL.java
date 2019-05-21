@@ -8,11 +8,23 @@ import android.view.ViewGroup;
 
 import com.dan.weatherforecast.R;
 import com.dan.weatherforecast.data.base.CityDescription;
-import com.dan.weatherforecast.data.CityKharkiv;
-import com.dan.weatherforecast.data.CityKyiv;
+import com.dan.weatherforecast.data.cities.CityDnipro;
+import com.dan.weatherforecast.data.cities.CityDonetsk;
+import com.dan.weatherforecast.data.cities.CityKharkiv;
+import com.dan.weatherforecast.data.cities.CityKyiv;
+import com.dan.weatherforecast.data.cities.CityLviv;
+import com.dan.weatherforecast.data.cities.CityOdessa;
+import com.dan.weatherforecast.data.cities.CitySumy;
+import com.dan.weatherforecast.data.cities.CityZaporizhia;
 import com.dan.weatherforecast.logic.diffUtils.CityDiffUtils;
+import com.dan.weatherforecast.logic.holder.DniproHolder;
+import com.dan.weatherforecast.logic.holder.DonetskHolder;
 import com.dan.weatherforecast.logic.holder.KharkivHolder;
 import com.dan.weatherforecast.logic.holder.KyivHolder;
+import com.dan.weatherforecast.logic.holder.LvivHolder;
+import com.dan.weatherforecast.logic.holder.OdessaHolder;
+import com.dan.weatherforecast.logic.holder.SumyHolder;
+import com.dan.weatherforecast.logic.holder.ZaporizhiaHolder;
 import com.dan.weatherforecast.logic.holder.base.CityHolder;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,18 +52,18 @@ public class AdapterURL extends RecyclerView.Adapter<CityHolder> {
                 return new KyivHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vh_form_city, viewGroup, false));
             case VIEW_TYPE_KHARKIV:
                 return new KharkivHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vh_form_city, viewGroup, false));
-//            case VIEW_TYPE_ODESSA:
-//                return null;
-//            case VIEW_TYPE_DNIPRO:
-//                return null;
-//            case VIEW_TYPE_DONETSK:
-//                return null;
-//            case VIEW_TYPE_ZAPORIZHIA:
-//                return null;
-//            case VIEW_TYPE_LVIV:
-//                return null;
-//            case VIEW_TYPE_SUMY:
-//                return null;
+            case VIEW_TYPE_ODESSA:
+                return new OdessaHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vh_form_city, viewGroup, false));
+            case VIEW_TYPE_DNIPRO:
+                return new DniproHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vh_form_city, viewGroup, false));
+            case VIEW_TYPE_DONETSK:
+                return new DonetskHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vh_form_city, viewGroup, false));
+            case VIEW_TYPE_ZAPORIZHIA:
+                return new ZaporizhiaHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vh_form_city, viewGroup, false));
+            case VIEW_TYPE_LVIV:
+                return new LvivHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vh_form_city, viewGroup, false));
+            case VIEW_TYPE_SUMY:
+                return new SumyHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vh_form_city, viewGroup, false));
         }
     }
 
@@ -61,6 +73,18 @@ public class AdapterURL extends RecyclerView.Adapter<CityHolder> {
             ((KyivHolder) cityHolder).bind((CityKyiv) city.get(viewPosition));
         if (cityHolder instanceof KharkivHolder)
             ((KharkivHolder) cityHolder).bind((CityKharkiv) city.get(viewPosition));
+        if(cityHolder instanceof OdessaHolder)
+            ((OdessaHolder) cityHolder).bind((CityOdessa) city.get(viewPosition));
+        if (cityHolder instanceof DniproHolder)
+            ((DniproHolder) cityHolder).bind((CityDnipro) city.get(viewPosition));
+        if(cityHolder instanceof DonetskHolder)
+            ((DonetskHolder) cityHolder).bind((CityDonetsk) city.get(viewPosition));
+        if (cityHolder instanceof ZaporizhiaHolder)
+            ((ZaporizhiaHolder) cityHolder).bind((CityZaporizhia) city.get(viewPosition));
+        if(cityHolder instanceof LvivHolder)
+            ((LvivHolder) cityHolder).bind((CityLviv) city.get(viewPosition));
+        if (cityHolder instanceof SumyHolder)
+            ((SumyHolder) cityHolder).bind((CitySumy) city.get(viewPosition));
     }
 
     @Override
@@ -68,6 +92,12 @@ public class AdapterURL extends RecyclerView.Adapter<CityHolder> {
         if (position >= city.size()) throw new RuntimeException("Wrong position");
         if (city.get(position) instanceof CityKyiv) return VIEW_TYPE_KYIV;
         if (city.get(position) instanceof CityKharkiv) return VIEW_TYPE_KHARKIV;
+        if (city.get(position) instanceof CityOdessa) return VIEW_TYPE_ODESSA;
+        if (city.get(position) instanceof CityDnipro) return VIEW_TYPE_DNIPRO;
+        if (city.get(position) instanceof CityDonetsk) return VIEW_TYPE_DONETSK;
+        if (city.get(position) instanceof CityZaporizhia) return VIEW_TYPE_ZAPORIZHIA;
+        if (city.get(position) instanceof CityLviv) return VIEW_TYPE_LVIV;
+        if (city.get(position) instanceof CitySumy) return VIEW_TYPE_SUMY;
         throw new RuntimeException("unknow character");
     }
 

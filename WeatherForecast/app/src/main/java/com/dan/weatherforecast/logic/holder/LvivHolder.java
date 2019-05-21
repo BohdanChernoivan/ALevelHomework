@@ -6,16 +6,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dan.weatherforecast.R;
-import com.dan.weatherforecast.data.cities.CityKharkiv;
+import com.dan.weatherforecast.data.cities.CityLviv;
 import com.dan.weatherforecast.logic.holder.base.CityHolder;
 import com.squareup.picasso.Picasso;
 
-public class KharkivHolder extends CityHolder {
+public class LvivHolder extends CityHolder {
 
     private TextView textView;
     private ImageView imageView;
 
-    public KharkivHolder(@NonNull View itemView) {
+    public LvivHolder(@NonNull View itemView) {
         super(itemView);
 
         textView = itemView.findViewById(R.id.txt_form_city);
@@ -23,10 +23,10 @@ public class KharkivHolder extends CityHolder {
 
     }
 
-    public void bind(CityKharkiv cityKharkiv) {
-        textView.setText(cityKharkiv.name);
+    public void bind(CityLviv cityLviv) {
+        textView.setText(cityLviv.name);
         Picasso.get()
-                .load(cityKharkiv.getImgUrl())
+                .load(cityLviv.getImgUrl())
                 .error(R.drawable.ic_signal_wifi_off)
                 .placeholder(R.drawable.ic_cloud_download)
                 .into(imageView);
